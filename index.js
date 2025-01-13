@@ -1,9 +1,12 @@
-const http = require('http');
+import * as dotenv from 'dotenv';
+import { createServer } from 'http';
+
+dotenv.config();
 const port = process.env.PORT || 3000;
 
-const server = http.createServer((req, res) => {
+const server = createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, updated Azure!');
+    res.end(process.env.MESSAGE);
 });
 
 server.listen(port, () => {
